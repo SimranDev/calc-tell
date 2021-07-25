@@ -2,25 +2,20 @@ import { FC } from "react";
 import styled from "styled-components";
 import { COLORS, DEFAULTS } from "../../consts/styles";
 
-export interface InputFieldProps {
-  onChange: (val: string) => void;
-  onPeriodChange: (val: string) => void;
+export interface DepositFieldProps {
+  onChange: (val: string) => void;    
 }
 
-const InputField: FC<InputFieldProps> = ({ onChange, onPeriodChange }) => {
+const DepositField: FC<DepositFieldProps> = ({onChange}) => {
   return (
     <Container>
       <label>$</label>
-      <Input onChange={(e) => onChange(e.target.value)} type="number" />
-      <select name="period" onChange={(e) => onPeriodChange(e.target.value)}>
-        <option value="1">per year</option>
-        <option value="52">per week</option>
-      </select>
+      <Input onChange={(e) => onChange(e.target.value)} />            
     </Container>
   );
 };
 
-export default InputField;
+export default DepositField;
 
 const Container = styled.span`
   width: 100%;
@@ -34,20 +29,6 @@ const Container = styled.span`
     left: 12px;
     color: ${COLORS.textPrimary};
     font-size: 18px;
-  }
-
-  select {
-    position: absolute;
-    z-index: 1;
-    right: 12px;
-    color: ${COLORS.textPrimary};
-    font-size: 18px;
-    border: none;
-    outline: none;
-    height: ${DEFAULTS.btnHeight};
-    :hover {
-      cursor: pointer;
-    }
   }
 `;
 

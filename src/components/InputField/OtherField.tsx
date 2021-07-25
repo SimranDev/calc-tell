@@ -2,25 +2,34 @@ import { FC } from "react";
 import styled from "styled-components";
 import { COLORS, DEFAULTS } from "../../consts/styles";
 
-export interface InputFieldProps {
+export interface OtherFieldProps {
   onChange: (val: string) => void;
-  onPeriodChange: (val: string) => void;
+  onPeriodChange: (val: number) => void;
+  onDelete: () => void;
 }
 
-const InputField: FC<InputFieldProps> = ({ onChange, onPeriodChange }) => {
+const OtherField: FC<OtherFieldProps> = ({
+  onChange,
+  onPeriodChange,
+  onDelete,
+}) => {
   return (
     <Container>
       <label>$</label>
-      <Input onChange={(e) => onChange(e.target.value)} type="number" />
-      <select name="period" onChange={(e) => onPeriodChange(e.target.value)}>
+      <Input onChange={(e) => onChange(e.target.value)} />
+      <select
+        name="period"
+        onChange={(e) => onPeriodChange(parseInt(e.target.value))}
+      >
         <option value="1">per year</option>
         <option value="52">per week</option>
       </select>
+      <button onClick={onDelete}>x</button>
     </Container>
   );
 };
 
-export default InputField;
+export default OtherField;
 
 const Container = styled.span`
   width: 100%;
@@ -39,7 +48,7 @@ const Container = styled.span`
   select {
     position: absolute;
     z-index: 1;
-    right: 12px;
+    right: 30px;
     color: ${COLORS.textPrimary};
     font-size: 18px;
     border: none;
@@ -48,6 +57,10 @@ const Container = styled.span`
     :hover {
       cursor: pointer;
     }
+  }
+  button {
+    position: absolute;
+    right: 5px;
   }
 `;
 
