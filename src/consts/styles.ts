@@ -10,4 +10,6 @@ export const COLORS = {
 export const DEFAULTS = {
   btnRadius: "6px",
   btnHeight: "40px",
+  btnSpacing: "10px",
+  contentWidth: "1200px",
 };
