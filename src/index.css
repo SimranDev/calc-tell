@@ -8,6 +8,8 @@ body {
   background-color: #c2c1c6;
 }
 
-/* :root {
- 
-} */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
