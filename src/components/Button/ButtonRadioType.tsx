@@ -2,16 +2,21 @@ import { FC } from "react";
 import styled from "styled-components";
 import { COLORS, DEFAULTS } from "../../consts/styles";
 
-export interface Button2Props {
+export interface ButtonRadioTypeProps {
   title: string;
   checked?: boolean;
-  onChange?: React.ChangeEventHandler<HTMLInputElement>;
   name: string;
   onClick: () => void;
   style?: React.CSSProperties;
 }
 
-const Button: FC<Button2Props> = ({ title, checked, name, onClick, style }) => {
+const ButtonRadioType: FC<ButtonRadioTypeProps> = ({
+  title,
+  checked,
+  name,
+  onClick,
+  style,
+}) => {
   return (
     <>
       <Container style={style}>
@@ -24,10 +29,11 @@ const Button: FC<Button2Props> = ({ title, checked, name, onClick, style }) => {
   );
 };
 
-export default Button;
+export default ButtonRadioType;
 
 const Container = styled.div`
   width: 100%;
+
   label {
     width: 100%;
     height: ${DEFAULTS.btnHeight};
@@ -38,6 +44,10 @@ const Container = styled.div`
     align-items: center;
     text-align: center;
     border-radius: ${DEFAULTS.btnRadius};
+
+    :hover {
+      cursor: pointer;
+    }
   }
 
   input {

@@ -12,4 +12,6 @@ export const DEFAULTS = {
   btnHeight: "40px",
   btnSpacing: "10px",
   contentWidth: "1200px",
+  contentTopMargin: "20px",
+  btnFontSize: "17px",
 };

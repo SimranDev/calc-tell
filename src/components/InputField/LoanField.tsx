@@ -1,18 +1,19 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { COLORS, DEFAULTS } from "../../consts/styles";
+import RemoveButton from "../Button/RemoveButton";
 
 export interface LoanFieldProps {
-  onChange: (val: string) => void;  
+  onChange: (val: string) => void;
   onDelete: () => void;
 }
 
-const LoanField: FC<LoanFieldProps> = ({onChange, onDelete}) => {
+const LoanField: FC<LoanFieldProps> = ({ onChange, onDelete }) => {
   return (
     <Container>
       <label>$</label>
-      <Input onChange={(e) => onChange(e.target.value)} />      
-      <button onClick={onDelete}>x</button>
+      <Input onChange={(e) => onChange(e.target.value)} />
+      <RemoveButton onClick={onDelete}>x</RemoveButton>
     </Container>
   );
 };

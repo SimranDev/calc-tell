@@ -11,7 +11,7 @@ const initialState: IState = {
   salary1_period: 1,
   salary2: 0,
   salary2_period: 1,
-  other_list: [],
+  other_income_list: [],
   credit_list: [],
   loan_list: [],
 };
@@ -19,8 +19,9 @@ const initialState: IState = {
 const updateState = (state: IState) => {
   state.income =
     state.salary1 * state.salary1_period + state.salary2 * state.salary2_period;
-  for (let i = 0; i < state.other_list.length; i++)
-    state.income += state.other_list[i].value * state.other_list[i].period;
+  for (let i = 0; i < state.other_income_list.length; i++)
+    state.income +=
+      state.other_income_list[i].value * state.other_income_list[i].period;
 
   state.loan = 0;
   for (let i = 0; i < state.loan_list.length; i++)
@@ -57,28 +58,28 @@ export const counterSlice = createSlice({
       updateState(state);
     },
 
-    addOther: (state: IState) => {
-      state.other_list.push({
+    addOtherIncome: (state: IState) => {
+      state.other_income_list.push({
         value: 0,
         period: 1,
       });
       updateState(state);
     },
 
-    deleteOther: (state: IState, action: PayloadAction<number>) => {
-      state.other_list = [...state.other_list].filter(
+    deleteOtherIncome: (state: IState, action: PayloadAction<number>) => {
+      state.other_income_list = [...state.other_income_list].filter(
         (item, index) => index !== action.payload
       );
       updateState(state);
     },
 
-    deleteAllOther: (state: IState) => {
-      state.other_list = [];
+    deleteAllOtherIncome: (state: IState) => {
+      state.other_income_list = [];
       updateState(state);
     },
 
     otherIncomeChange: (state: IState, action: PayloadAction<IParam>) => {
-      state.other_list = [...state.other_list].map(
+      state.other_income_list = [...state.other_income_list].map(
         (item: IPeriodValue, index: number) => {
           return action.payload.index === index
             ? { value: action.payload.value, period: item.period }
@@ -90,7 +91,7 @@ export const counterSlice = createSlice({
     },
 
     otherIncomePeriodChange: (state: IState, action: PayloadAction<IParam>) => {
-      state.other_list = [...state.other_list].map(
+      state.other_income_list = [...state.other_income_list].map(
         (item: IPeriodValue, index: number) => {
           return action.payload.index === index
             ? { value: item.value, period: action.payload.value }
@@ -163,21 +164,27 @@ export const counterSlice = createSlice({
 export const {
   salaryChange,
   salaryPeriodChange,
+
   salary2Change,
   salary2PeriodChange,
+
   otherIncomeChange,
   otherIncomePeriodChange,
-  addOther,
-  deleteOther,
-  deleteAllOther,
+
+  addOtherIncome,
+  deleteOtherIncome,
+  deleteAllOtherIncome,
+
   loanChange,
   addLoan,
   deleteLoan,
   deleteAllLoan,
+
   creditChange,
   addCredit,
   deleteCredit,
   deleteAllCredit,
+
   depositChange,
 } = counterSlice.actions;
 

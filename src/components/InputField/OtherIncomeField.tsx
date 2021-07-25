@@ -1,6 +1,7 @@
 import { FC } from "react";
 import styled from "styled-components";
 import { COLORS, DEFAULTS } from "../../consts/styles";
+import RemoveButton from "../Button/RemoveButton";
 
 export interface OtherFieldProps {
   onChange: (val: string) => void;
@@ -24,7 +25,7 @@ const OtherField: FC<OtherFieldProps> = ({
         <option value="1">per year</option>
         <option value="52">per week</option>
       </select>
-      <button onClick={onDelete}>x</button>
+      <RemoveButton onClick={onDelete} />
     </Container>
   );
 };
@@ -48,7 +49,7 @@ const Container = styled.span`
   select {
     position: absolute;
     z-index: 1;
-    right: 30px;
+    right: 40px;
     color: ${COLORS.textPrimary};
     font-size: 18px;
     border: none;

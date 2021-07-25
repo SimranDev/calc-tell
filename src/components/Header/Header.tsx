@@ -21,5 +21,4 @@ const Container = styled.nav`
   align-items: flex-start;
   justify-content: flex-start;
   width: 100%;
-  border: 1px dashed pink;
 `;

@@ -18,7 +18,7 @@ export interface IState {
   salary1_period: number;
   salary2: number;
   salary2_period: number;
-  other_list: IPeriodValue[];
+  other_income_list: IPeriodValue[];
   credit_list: number[];
   loan_list: number[];
 }
