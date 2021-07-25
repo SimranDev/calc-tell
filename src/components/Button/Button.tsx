@@ -8,21 +8,15 @@ export interface Button2Props {
   onChange?: React.ChangeEventHandler<HTMLInputElement>;
   name: string;
   onClick: () => void;
+  style?: React.CSSProperties;
 }
 
-const Button: FC<Button2Props> = ({ title, checked, name, onClick }) => {
+const Button: FC<Button2Props> = ({ title, checked, name, onClick, style }) => {
   return (
     <>
-      <Container onClick={() => onclick}>
-        <input
-          type="radio"
-          value={title}
-          id={title}
-          name={name}
-          defaultChecked={checked}
-          onChange={() => onclick}
-        />
-        <label htmlFor={title} onClick={() => onclick}>
+      <Container style={style}>
+        <input type="radio" id={title} name={name} defaultChecked={checked} />
+        <label htmlFor={title} onClick={() => onClick()}>
           {title}
         </label>
       </Container>
@@ -34,7 +28,6 @@ export default Button;
 
 const Container = styled.div`
   width: 100%;
-
   label {
     width: 100%;
     height: ${DEFAULTS.btnHeight};
@@ -49,6 +42,7 @@ const Container = styled.div`
 
   input {
     position: fixed;
+    display: none;
     :checked + label {
       background-color: ${COLORS.activeBtn};
       color: ${COLORS.textActiveBtn};
