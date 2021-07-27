@@ -30,7 +30,7 @@ const SalaryBlock: React.FC = () => {
           style={{ marginRight: DEFAULTS.btnSpacing }}
         />
         <ButtonRadioType
-          title="I'm buing with someone"
+          title="I'm buying with someone"
           name="radios1"
           onClick={() => {
             setMode(2);
